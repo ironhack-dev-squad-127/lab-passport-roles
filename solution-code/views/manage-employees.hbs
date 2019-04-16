@@ -1,0 +1,28 @@
+<h1>Manage Employees</h1>
+{{!-- {{carrot}} --}}
+<h2>Add Employee</h2>
+
+<form action="/add-employee" method="post">
+  {{!-- The input will define a req.body.username --}}
+  Username: <input type="text" name="username"> <br>
+  Password: <input type="password" name="password"> <br>
+  Role: <select name="role">
+    <option value="Boss">Boss</option>
+    <option value="TA">TA</option>
+    <option value="Developer">Developer</option>
+  </select> <br>
+  <button type="submit">Create employee</button>
+</form>
+
+<h2>List of Employees</h2>
+<table>
+  <tbody>
+    {{#each users}}
+    <tr>
+      <td>{{this.username}}</td>
+      <td>{{this.role}}</td>
+      <td><a href="/delete-employee/{{this._id}}">Delete</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
